@@ -39,6 +39,7 @@ defmodule AdventOfCodeTemplate.TemplateGenerator do
         \"""
         TODO
         \"""
+        |> String.trim()
         |> String.split("\\n")
         |> Enum.map(&String.trim/1)
       end
