@@ -12,10 +12,7 @@ defmodule AdventOfCodeTemplate.Cli do
   end
 
   defp run_all_functions(day_module) do
-    day_module.__info__(:functions)
-    |> Enum.filter(fn {_function_atom, arity} -> arity == 0 end)
-    |> Enum.map(fn {function_atom, _arity} -> function_atom end)
-    |> Enum.sort()
+    [:a, :b]
     |> Enum.map(&run_function(day_module, &1))
     |> Enum.join("\n")
   end
