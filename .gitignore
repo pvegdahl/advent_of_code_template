@@ -27,3 +27,4 @@ advent_of_code_template-*.tar
 
 # Jetbrains IDEs
 *.iml
+*.idea
