@@ -5,9 +5,11 @@ defmodule AdventOfCodeTemplate.TemplateGenerator do
       alias AdventOfCodeTemplate.Helpers
 
       def part_a(_lines) do
+        -1
       end
 
       def part_b(_lines) do
+        -1
       end
 
       def a() do
@@ -32,7 +34,7 @@ defmodule AdventOfCodeTemplate.TemplateGenerator do
 
       @tag :skip
       test "Day#{day} part A example" do
-        assert Day#{day}.part_a(example_input()) == :something
+        assert Day#{day}.part_a(example_input()) == 42
       end
 
       defp example_input() do
@@ -46,7 +48,7 @@ defmodule AdventOfCodeTemplate.TemplateGenerator do
 
       @tag :skip
       test "Day#{day} part B example" do
-        assert Day#{day}.part_b(example_input()) == :something_else
+        assert Day#{day}.part_b(example_input()) == 42
       end
     end
     """
