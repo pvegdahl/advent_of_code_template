@@ -1,27 +1,25 @@
-defmodule AdventOfCodeTemplate.HelpersTest do
+defmodule AdventOfCode2024.HelpersTest do
   use ExUnit.Case, async: true
 
-  alias AdventOfCodeTemplate.Helpers
+  alias AdventOfCode2024.Helpers
 
-  describe "reverse_map_of_lists/1" do
-    test "A reversed map of lists with one key and one value" do
-      assert Helpers.reverse_map_of_lists(%{1 => [2]}) == %{2 => [1]}
-    end
+  test "A reversed map of lists with one key and one value" do
+    assert Helpers.reverse_map_of_lists(%{1 => [2]}) == %{2 => [1]}
+  end
 
-    test "A reversed map of lists with two keys, each with one distinct value" do
-      assert Helpers.reverse_map_of_lists(%{1 => [2], 3 => [4]}) == %{2 => [1], 4 => [3]}
-    end
+  test "A reversed map of lists with two keys, each with one distinct value" do
+    assert Helpers.reverse_map_of_lists(%{1 => [2], 3 => [4]}) == %{2 => [1], 4 => [3]}
+  end
 
-    test "A complex test of reversed map of lists" do
-      assert Helpers.reverse_map_of_lists(%{1 => [2, 3, 4], 0 => [4, 5, 6]}) == %{
-               2 => [1],
-               3 => [1],
-               # Note: This ordering is only guaranteed by the current Erlang implementation of small maps.
-               4 => [0, 1],
-               5 => [0],
-               6 => [0]
-             }
-    end
+  test "A complex test of reversed map of lists" do
+    assert Helpers.reverse_map_of_lists(%{1 => [2, 3, 4], 0 => [4, 5, 6]}) == %{
+             2 => [1],
+             3 => [1],
+             # Note: This ordering is only guaranteed by the current Erlang implementation of small maps.
+             4 => [0, 1],
+             5 => [0],
+             6 => [0]
+           }
   end
 
   describe "parse_string_grid" do
@@ -71,6 +69,17 @@ defmodule AdventOfCodeTemplate.HelpersTest do
 
     test "not in bounds y just too large" do
       refute Helpers.in_bounds?({2, 4}, {3, 4})
+    end
+  end
+
+  describe "point_groupings" do
+    test "Simple, easy case" do
+      assert Helpers.point_groupings(MapSet.new([{1, 1}, {1, 2}])) == [MapSet.new([{1, 1}, {1, 2}])]
+    end
+
+    test "Three groups. Diagonals not in the same group" do
+      assert Helpers.point_groupings(MapSet.new([{1, 1}, {2, 1}, {4, 4}, {5, 4}, {6, 3}])) |> Enum.sort() ==
+               [MapSet.new([{1, 1}, {2, 1}]), MapSet.new([{4, 4}, {5, 4}]), MapSet.new([{6, 3}])] |> Enum.sort()
     end
   end
 end
