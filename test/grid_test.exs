@@ -1,7 +1,7 @@
-defmodule AdventOfCode2024.GridTest do
+defmodule AdventOfCodeTemplate.GridTest do
   use ExUnit.Case, async: true
 
-  alias AdventOfCode2024.Grid
+  alias AdventOfCodeTemplate.Grid
 
   describe "parse_string_grid" do
     test "empty grid" do

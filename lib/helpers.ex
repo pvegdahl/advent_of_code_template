@@ -1,4 +1,4 @@
-defmodule AdventOfCode2024.Helpers do
+defmodule AdventOfCodeTemplate.Helpers do
   def file_to_lines!(filename) do
     File.stream!(filename, [:utf8])
     |> Enum.map(&String.trim/1)
